@@ -1,6 +1,49 @@
-/**
- * A cute little text version of the classic Silver Dollar game
- */
+import os
+import requests
+
+ENDPOINTS = {
+    "gemini": {
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
+        "api_key": os.getenv("JAMES_ANTHONY_LAMBERT"),
+        "auth_type": "query_param",
+    },
+    "huggingface": {
+        "url": "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3",
+        "api_key": os.getenv("JAMES_LAMBERT"),
+        "auth_type": "bearer",
+    },
+    "grok": {
+        "url": "https://api.x.ai/v1/chat/completions",
+        "api_key": os.getenv("JAMES_ANTHONY_LAMBERT"),
+        "auth_type": "bearer",
+    },
+}
+
+def route_payload(target: str, payload: dict):
+    config = ENDPOINTS.get(target)
+    if not config:
+        raise ValueError(f"Unknown route target: {target}")
+
+    api_key = config["api_key"]
+    if not api_key:
+        raise ValueError(f"Missing environment variable key for target: {target}")
+
+    headers = {"Content-Type": "application/json"}
+    url = config["url"]
+    params = {}
+
+    if config["auth_type"] == "bearer":
+        headers["Authorization"] = f"Bearer {api_key}"
+    elif config["auth_type"] == "query_param":
+        params["key"] = api_key
+
+    response = requests.post(url, json=payload, headers=headers, params=params, timeout=30)
+    response.raise_for_status()
+    return response.json()
+
+if __name__ == "__main__":
+    print("Remote controller routing module loaded.")
+~ $
 
 import java.lang.Math.*;
 import java.util.*;
