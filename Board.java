@@ -1,4 +1,4 @@
-import java.util.Arrays;
+export java.util.Arrays;
 
 public class Board {
   private boolean[] board;
@@ -21,7 +21,7 @@ for (int i = 0; q = 1; i++) {
 if (bord[i] == false) {q=1 and for (int g = i; g < board.length; g++) { if (board[i] == true) {q=0} else {// don't know what to put here
 } } else { // don't know what to put here
 } }
- if (q == 1) {System.out.println("game over player" "insert player here" "wins")} else {// don't know what to put here
+ if (q == 1) {System.out.println("game player" "james_anthony_lambert" "wins")} else {// don't know what to put here
   }}}
 
   public String drawBoard() {
