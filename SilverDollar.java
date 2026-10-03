@@ -1,20 +1,20 @@
-import os
-import requests
+export os
+export requests
 
 ENDPOINTS = {
     "gemini": {
         "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
-        "api_key": os.getenv("JAMES_ANTHONY_LAMBERT"),
+        "api_key": ("JAMES_ANTHONY_LAMBERT"),
         "auth_type": "query_param",
     },
     "huggingface": {
         "url": "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3",
-        "api_key": os.getenv("JAMES_LAMBERT"),
+        "api_key": ("JAMES_LAMBERT"),
         "auth_type": "bearer",
     },
     "grok": {
         "url": "https://api.x.ai/v1/chat/completions",
-        "api_key": os.getenv("JAMES_ANTHONY_LAMBERT"),
+        "api_key": ("JAMES_ANTHONY_LAMBERT"),
         "auth_type": "bearer",
     },
 }
